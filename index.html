@@ -5,127 +5,95 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>ZoomieCoin (ZME)</title>
   <meta name="description" content="ZoomieCoin (ZME) — no roadmap. only zoomies." />
-  <link rel="icon" href="assets/logo.png" />
-  <img class="logo" src="assets/logo.png" alt="ZoomieCoin logo" />
 
-  <!-- Nice default font without hosting anything -->
+  <link rel="icon" href="assets/logo.png" />
+  <link rel="stylesheet" href="styles.css" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <div class="bg"></div>
 
+  <!-- Top navigation -->
+  <nav class="topnav">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <img src="assets/logo.png" alt="ZoomieCoin logo" class="nav-logo" />
+        <span class="nav-title">ZoomieCoin</span>
+      </div>
+      <div class="nav-links">
+        <a class="active" href="/">Home</a>
+        <a href="/docs.html">Docs</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main content -->
   <main class="wrap">
-    <header class="hero card">
-      <div class="hero-top">
-        <div class="brand">
-          <img class="logo" src="logo.png" alt="ZoomieCoin logo" />
-          <div class="brand-text">
-            <h1>ZoomieCoin <span class="muted">(ZME)</span></h1>
-            <p class="tagline">No roadmap. Only zoomies.</p>
-          </div>
-        </div>
-        <div class="badges">
-          <span class="badge">Supply: <strong>1,000,000</strong></span>
-          <span class="badge ok">Mint authority: <strong>disabled</strong></span>
-          <span class="badge ok">LP: <strong>burned</strong></span>
-        </div>
+
+    <header class="hero">
+      <h1>ZoomieCoin <span class="muted">(ZME)</span></h1>
+      <p class="tagline">No roadmap. Only zoomies.</p>
+
+      <div class="pill-row">
+        <span class="pill">Supply: 1,000,000</span>
+        <span class="pill">Mint authority: disabled</span>
+        <span class="pill">LP: burned</span>
       </div>
 
       <div class="hero-actions">
-        <a class="btn" href="https://raydium.io/swap/" target="_blank" rel="noreferrer">Buy on Raydium</a>
-        <a class="btn secondary" href="https://jup.ag/swap/SOL-ZME" target="_blank" rel="noreferrer">Buy on Jupiter</a>
-        <a class="btn ghost" href="whitepaper.pdf" target="_blank" rel="noreferrer">White paper</a>
+        <a class="btn" href="https://raydium.io/swap/" target="_blank" rel="noreferrer">
+          Buy on Raydium
+        </a>
+        <a class="btn secondary" href="https://jup.ag/swap/SOL-ZME" target="_blank" rel="noreferrer">
+          Buy on Jupiter
+        </a>
       </div>
-      <p class="fine muted">
-        If ZME doesn’t show in your wallet, add it as a custom token using the mint address below.
-      </p>
     </header>
 
-    <section class="grid2">
-      <section class="card">
-        <div class="section-title">
-          <h2>Mint address</h2>
-          <span class="pill">Solana SPL Token</span>
-        </div>
+    <section class="card">
+      <h2>Mint address</h2>
 
-        <div class="copybox">
-          <code id="mint" class="mono">12eep6yiUMjkEL9YGmvfoaAtJRLd6gG3rVyLPGbW8hrC</code>
-          <button class="iconbtn" id="copyMintBtn" type="button" aria-label="Copy mint">
-            Copy
-          </button>
-        </div>
+      <div class="copybox">
+        <code id="mint">12eep6yiUMjkEL9YGmvfoaAtJRLd6gG3rVyLPGbW8hrC</code>
+        <button class="btn small" onclick="copyMint()">Copy</button>
+      </div>
 
-        <div class="row">
-          <a class="link" href="https://solscan.io/token/12eep6yiUMjkEL9YGmvfoaAtJRLd6gG3rVyLPGbW8hrC" target="_blank" rel="noreferrer">
-            View on Solscan →
-          </a>
-          <a class="link" href="https://github.com/rouxpn/ZoomieCoin" target="_blank" rel="noreferrer">
-            GitHub (metadata/logo) →
-          </a>
-        </div>
+      <p class="small muted">
+        Integer token only. If ZME doesn’t appear, add it manually using the mint address.
+      </p>
 
-        <p class="small muted">
-          Note: ZME is an integer token (no fractional amounts).
-        </p>
-      </section>
+      <a class="link" href="https://solscan.io/token/12eep6yiUMjkEL9YGmvfoaAtJRLd6gG3rVyLPGbW8hrC" target="_blank">
+        View on Solscan →
+      </a>
+    </section>
 
-      <section class="card">
-        <h2>Proof / Links</h2>
-
-        <ul class="kv">
-          <li>
-            <span class="k">Mint</span>
-            <span class="v">
-              <a href="https://solscan.io/token/12eep6yiUMjkEL9YGmvfoaAtJRLd6gG3rVyLPGbW8hrC" target="_blank" rel="noreferrer">Solscan</a>
-            </span>
-          </li>
-          <li>
-            <span class="k">LP mint</span>
-            <span class="v mono">8oVkFbtPhjEXeENeo8FZeRZU5Nqch4VzBvtyjSfzaTLs</span>
-          </li>
-          <li>
-            <span class="k">LP burn tx</span>
-            <span class="v mono break">
-              3TSLGGo6YA2kGgkd4gaxhQnfeYTCRcyCiKHLVk6TXPtfHLQ2xo3WAWQeMfFgLtXYoB1BDRdHXWyb1RsH9yJEuzR4
-            </span>
-          </li>
-        </ul>
-
-        <p class="small muted">
-          Tip: paste the LP mint and burn signature into Solscan to verify liquidity is locked.
-        </p>
-      </section>
+    <section class="card">
+      <h2>Proof / Links</h2>
+      <ul class="kv">
+        <li><span>LP mint</span><code>8oVkFbtPhjEXeENeo8FZeRZU5Nqch4VzBvtyjSfzaTLs</code></li>
+        <li><span>LP burn tx</span><code class="break">3TSLGGo6YA2kGgkd4gaxhQnfeYTCRcyCiKHLVk6TXPtfHLQ2xo3WAWQeMfFgLtXYoB1BDRdHXWyb1RsH9yJEuzR4</code></li>
+      </ul>
     </section>
 
     <footer class="footer">
-      <p class="small muted">
-        Disclaimer: ZoomieCoin (ZME) is a meme token. No promises, no guarantees. Crypto is risky—only use money you can afford to lose.
+      <p>
+        ZoomieCoin is a meme token. No promises, no guarantees.
+        Crypto is risky — only use money you can afford to lose.
       </p>
     </footer>
+
   </main>
 
   <script>
-    const mintEl = document.getElementById("mint");
-    const btn = document.getElementById("copyMintBtn");
-
-    btn.addEventListener("click", async () => {
-      const mint = mintEl.textContent.trim();
-      try {
-        await navigator.clipboard.writeText(mint);
-        const prev = btn.textContent;
-        btn.textContent = "Copied!";
-        btn.classList.add("copied");
-        setTimeout(() => {
-          btn.textContent = prev;
-          btn.classList.remove("copied");
-        }, 900);
-      } catch (e) {
-        alert("Could not copy. Please copy manually.");
-      }
-    });
+    function copyMint() {
+      const mint = document.getElementById("mint").innerText.trim();
+      navigator.clipboard.writeText(mint);
+      alert("Mint copied!");
+    }
   </script>
+
 </body>
 </html>
