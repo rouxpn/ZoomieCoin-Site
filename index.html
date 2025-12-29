@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ZoomieCoin (ZME)</title>
+  <meta name="description" content="ZoomieCoin (ZME) — no roadmap. only zoomies." />
+  <link rel="icon" href="logo.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero">
+      <img class="logo" src="logo.png" alt="ZoomieCoin logo" />
+      <h1>ZoomieCoin <span class="muted">(ZME)</span></h1>
+      <p class="tagline">No roadmap. Only zoomies.</p>
+      <div class="pill-row">
+        <span class="pill">Supply: 1,000,000</span>
+        <span class="pill">Mint authority: disabled</span>
+        <span class="pill">LP: burned</span>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2>Token</h2>
+      <p class="mono" id="mint">12eep6yiUMjkEL9YGmvfoaAtJRLd6gG3rVyLPGbW8hrC</p>
+      <button class="btn secondary" onclick="copyMint()">Copy mint</button>
+      <p class="small muted">If your wallet doesn’t show ZME, add it as a custom token using the mint address above.</p>
+    </section>
+
+    <section class="grid">
+      <a class="btn" href="https://raydium.io/swap/" target="_blank" rel="noreferrer">Buy on Raydium</a>
+      <a class="btn" href="https://jup.ag/swap/SOL-ZME" target="_blank" rel="noreferrer">Buy on Jupiter (if indexed)</a>
+      <a class="btn secondary" href="https://solscan.io/token/12eep6yiUMjkEL9YGmvfoaAtJRLd6gG3rVyLPGbW8hrC" target="_blank" rel="noreferrer">Solscan: ZME Mint</a>
+      <a class="btn secondary" href="https://github.com/rouxpn/ZoomieCoin" target="_blank" rel="noreferrer">GitHub (logo/metadata)</a>
+    </section>
+
+    <section class="card">
+      <h2>Links / Proof</h2>
+      <ul class="links">
+        <li><span>Mint:</span> <a href="https://solscan.io/token/12eep6yiUMjkEL9YGmvfoaAtJRLd6gG3rVyLPGbW8hrC" target="_blank" rel="noreferrer">Solscan</a></li>
+        <li><span>LP mint:</span> <span class="mono">8oVkFbtPhjEXeENeo8FZeRZU5Nqch4VzBvtyjSfzaTLs</span></li>
+        <li><span>LP burn tx:</span> <span class="mono">3TSLGGo6YA2kGgkd4gaxhQnfeYTCRcyCiKHLVk6TXPtfHLQ2xo3WAWQeMfFgLtXYoB1BDRdHXWyb1RsH9yJEuzR4</span></li>
+      </ul>
+      <p class="small muted">
+        Tip: paste LP mint and burn signature into Solscan to verify liquidity is locked.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>White paper (optional)</h2>
+      <p class="small muted">Keep it short: what it is, what it isn’t, supply, LP burned, mint disabled, risks.</p>
+      <a class="btn secondary" href="whitepaper.pdf" target="_blank" rel="noreferrer">Open PDF</a>
+    </section>
+
+    <footer class="footer">
+      <p class="small">
+        ⚠️ ZoomieCoin is a meme/degen test token. No promises. Expect volatility. Not financial advice.
+      </p>
+    </footer>
+  </main>
+
+  <script>
+    function copyMint() {
+      const mint = document.getElementById("mint").innerText.trim();
+      navigator.clipboard.writeText(mint);
+      alert("Mint copied!");
+    }
+  </script>
+</body>
+</html>
