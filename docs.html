@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ZoomieCoin Docs</title>
+  <link rel="icon" href="assets/logo.png" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="topnav">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <img src="assets/logo.png" alt="ZoomieCoin logo" class="nav-logo" />
+        <span class="nav-title">ZoomieCoin</span>
+      </div>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a class="active" href="/docs.html">Docs</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <header class="hero">
+      <h1>Docs</h1>
+      <p class="tagline">White paper + verification links</p>
+    </header>
+
+    <section class="card">
+      <h2>White paper (PDF)</h2>
+
+      <!-- ✅ Embed -->
+      <div class="pdf-frame">
+        <iframe
+          src="assets/ZoomieCoin-Whitepaper.pdf"
+          title="ZoomieCoin Whitepaper"
+          loading="lazy"
+        ></iframe>
+      </div>
+
+      <!-- ✅ Fallback links -->
+      <div class="row">
+        <a class="btn" href="assets/ZoomieCoin-Whitepaper.pdf" target="_blank" rel="noreferrer">Open in new tab</a>
+        <a class="btn secondary" href="assets/ZoomieCoin-Whitepaper.pdf" download>Download</a>
+      </div>
+
+      <p class="small muted">
+        If the embed doesn’t load on your device/browser, use “Open in new tab.”
+      </p>
+    </section>
+  </main>
+
+</body>
+</html>
