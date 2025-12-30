@@ -11,17 +11,15 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
-
-  <!-- Top navigation -->
   <nav class="topnav">
     <div class="nav-inner">
       <div class="nav-left">
         <img src="assets/logo.png" alt="ZoomieCoin logo" class="nav-logo" />
-        <span class="nav-title">ZoomieCoin</span>
+        <div class="nav-title">ZoomieCoin <span class="sym">(ZME)</span></div>
       </div>
       <div class="nav-links">
         <a class="active" href="/">Home</a>
@@ -30,70 +28,89 @@
     </div>
   </nav>
 
-  <!-- Main content -->
   <main class="wrap">
+    <header class="hero card">
+      <div class="hero-top">
+        <div>
+          <h1>ZoomieCoin <span class="muted">(ZME)</span></h1>
+          <p class="tagline">No roadmap. Only zoomies.</p>
+          <p class="fine">Solana meme token • simple links • verifiable proof</p>
+        </div>
 
-    <header class="hero">
-      <h1>ZoomieCoin <span class="muted">(ZME)</span></h1>
-      <p class="tagline">No roadmap. Only zoomies.</p>
-
-      <div class="pill-row">
-        <span class="pill">Supply: 1,000,000</span>
-        <span class="pill">Mint authority: disabled</span>
-        <span class="pill">LP: burned</span>
+        <div class="badges">
+          <span class="badge">Supply: <strong>1,000,000</strong></span>
+          <span class="badge ok">Mint authority: <strong>disabled</strong></span>
+          <span class="badge ok">LP: <strong>burned</strong></span>
+        </div>
       </div>
 
       <div class="hero-actions">
-        <a class="btn" href="https://raydium.io/swap/" target="_blank" rel="noreferrer">
-          Buy on Raydium
-        </a>
-        <a class="btn secondary" href="https://jup.ag/swap/SOL-ZME" target="_blank" rel="noreferrer">
-          Buy on Jupiter
-        </a>
+        <a class="btn" href="https://raydium.io/swap/" target="_blank" rel="noreferrer">Buy on Raydium</a>
+        <a class="btn secondary" href="https://jup.ag/swap/SOL-ZME" target="_blank" rel="noreferrer">Buy on Jupiter</a>
+        <a class="btn ghost" href="/docs.html">Docs / White paper</a>
       </div>
+
+      <p class="fine">If your wallet doesn’t show ZME, add it as a custom token using the mint address below.</p>
     </header>
 
-    <section class="card">
-      <h2>Mint address</h2>
+    <section class="grid2">
+      <section class="card">
+        <div class="section-title">
+          <h2>Mint address</h2>
+          <span class="pill">Integer token only</span>
+        </div>
 
-      <div class="copybox">
-        <code id="mint">12eep6yiUMjkEL9YGmvfoaAtJRLd6gG3rVyLPGbW8hrC</code>
-        <button class="btn small" onclick="copyMint()">Copy</button>
-      </div>
+        <div class="copybox">
+          <code id="mint" class="break">12eep6yiUMjkEL9YGmvfoaAtJRLd6gG3rVyLPGbW8hrC</code>
+          <button class="btn small" id="copyMintBtn" type="button">Copy</button>
+        </div>
 
-      <p class="small muted">
-        Integer token only. If ZME doesn’t appear, add it manually using the mint address.
-      </p>
+        <div class="row">
+          <a class="link" href="https://solscan.io/token/12eep6yiUMjkEL9YGmvfoaAtJRLd6gG3rVyLPGbW8hrC" target="_blank" rel="noreferrer">Solscan →</a>
+          <a class="link" href="https://github.com/rouxpn/ZoomieCoin" target="_blank" rel="noreferrer">GitHub (metadata/logo) →</a>
+        </div>
 
-      <a class="link" href="https://solscan.io/token/12eep6yiUMjkEL9YGmvfoaAtJRLd6gG3rVyLPGbW8hrC" target="_blank">
-        View on Solscan →
-      </a>
-    </section>
+        <p class="small">Tip: if you can’t search “ZME” yet, use the mint address to add/import the token in your wallet or DEX.</p>
+      </section>
 
-    <section class="card">
-      <h2>Proof / Links</h2>
-      <ul class="kv">
-        <li><span>LP mint</span><code>8oVkFbtPhjEXeENeo8FZeRZU5Nqch4VzBvtyjSfzaTLs</code></li>
-        <li><span>LP burn tx</span><code class="break">3TSLGGo6YA2kGgkd4gaxhQnfeYTCRcyCiKHLVk6TXPtfHLQ2xo3WAWQeMfFgLtXYoB1BDRdHXWyb1RsH9yJEuzR4</code></li>
-      </ul>
+      <section class="card">
+        <h2>Proof / Links</h2>
+        <ul class="kv">
+          <li><span>LP mint</span><code class="break">8oVkFbtPhjEXeENeo8FZeRZU5Nqch4VzBvtyjSfzaTLs</code></li>
+          <li><span>LP burn tx</span><code class="break">3TSLGGo6YA2kGgkd4gaxhQnfeYTCRcyCiKHLVk6TXPtfHLQ2xo3WAWQeMfFgLtXYoB1BDRdHXWyb1RsH9yJEuzR4</code></li>
+        </ul>
+        <p class="small">Paste the LP mint and burn signature into Solscan to verify liquidity is locked.</p>
+      </section>
     </section>
 
     <footer class="footer">
-      <p>
-        ZoomieCoin is a meme token. No promises, no guarantees.
-        Crypto is risky — only use money you can afford to lose.
-      </p>
+      <p>Disclaimer: ZoomieCoin (ZME) is a meme token. No promises, no guarantees. Crypto is risky—only use money you can afford to lose.</p>
     </footer>
-
   </main>
 
-  <script>
-    function copyMint() {
-      const mint = document.getElementById("mint").innerText.trim();
-      navigator.clipboard.writeText(mint);
-      alert("Mint copied!");
-    }
-  </script>
+  <div class="toast" id="toast">Copied!</div>
 
+  <script>
+    const mintEl = document.getElementById("mint");
+    const btn = document.getElementById("copyMintBtn");
+    const toast = document.getElementById("toast");
+
+    function showToast(text){
+      toast.textContent = text;
+      toast.classList.add("show");
+      window.clearTimeout(window.__toastTimer);
+      window.__toastTimer = window.setTimeout(() => toast.classList.remove("show"), 900);
+    }
+
+    btn.addEventListener("click", async () => {
+      const mint = mintEl.textContent.trim();
+      try {
+        await navigator.clipboard.writeText(mint);
+        showToast("Mint copied");
+      } catch (e) {
+        showToast("Copy failed — select manually");
+      }
+    });
+  </script>
 </body>
 </html>
