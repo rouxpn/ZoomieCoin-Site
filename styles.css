@@ -395,13 +395,13 @@ code, .mono{
 }
 
 .hero-logo {
-  width: 140px;
+  width: 96px;          /* ↓ smaller, brand-sized */
   height: auto;
-  border-radius: 28px;
-  background: rgba(255,255,255,0.05);
+  border-radius: 20px;
+  background: rgba(255,255,255,0.04);
   box-shadow:
     0 0 0 1px rgba(255,255,255,0.12),
-    0 10px 40px rgba(0,0,0,0.35);
+    0 8px 28px rgba(0,0,0,0.35);
 }
 
 /* MOBILE: stack + shrink logo */
