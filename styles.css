@@ -373,3 +373,51 @@ code, .mono{
   .kv li{ grid-template-columns: 1fr; }
   .hero h1{ font-size: 30px; }
 }
+
+/* HERO LAYOUT */
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 32px;
+}
+
+/* LEFT SIDE */
+.hero-left {
+  max-width: 680px;
+}
+
+/* RIGHT SIDE LOGO */
+.hero-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-logo {
+  width: 140px;
+  height: auto;
+  border-radius: 28px;
+  background: rgba(255,255,255,0.05);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.12),
+    0 10px 40px rgba(0,0,0,0.35);
+}
+
+/* MOBILE: stack + shrink logo */
+@media (max-width: 900px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
+  .hero-right {
+    justify-content: flex-start;
+  }
+
+  .hero-logo {
+    width: 96px;
+    margin-top: 16px;
+  }
+}
+
