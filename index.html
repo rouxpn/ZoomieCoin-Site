@@ -132,17 +132,24 @@
         const el = document.getElementById("poolAmt");
         if (!el) return;
 
+        el.textContent = "…";
+
         try {
-          const res = await fetch("/pool-balance");
+          const res = await fetch("/pool-balance", { cache: "no-store" });
           if (!res.ok) throw new Error("HTTP " + res.status);
 
           const data = await res.json();
-          const amountStr = data?.amount;
 
-          if (!amountStr) throw new Error("No amount returned");
+          if (!data || !data.amount) {
+            console.warn("Pool balance unavailable:", data);
+            el.textContent = "—";
+            return;
+          }
 
-          const n = Number(amountStr);
-          el.textContent = Number.isFinite(n) ? n.toLocaleString() : amountStr;
+          const n = Number(data.amount);
+          el.textContent = Number.isFinite(n)
+            ? n.toLocaleString()
+            : data.amount;
         } catch (err) {
           console.warn("Pool balance fetch failed:", err);
           el.textContent = "—";
