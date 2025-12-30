@@ -374,38 +374,114 @@ code, .mono{
   .hero h1{ font-size: 30px; }
 }
 
-/* HERO LAYOUT */
+/* ================================
+   HERO LAYOUT (desktop)
+================================ */
 .hero-inner {
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
-  gap: 32px;
+  gap: 24px;
 }
 
-/* LEFT SIDE */
 .hero-left {
   max-width: 680px;
 }
 
-/* RIGHT SIDE LOGO */
 .hero-right {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* HERO LOGO SIZE */
+/* HERO LOGO (desktop size) */
 .hero-logo {
-  width: 256px;       
-  max-width: 256px
+  width: 80px;            /* change this (64–96) if you want */
+  max-width: 80px;
   height: auto;
   display: block;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.04);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.12),
+    0 8px 24px rgba(0,0,0,0.35);
 }
 
-/* Mobile adjustments */
+/* ================================
+   MOBILE POLISH
+================================ */
 @media (max-width: 900px) {
+
+  /* Overall spacing */
+  .wrap { padding: 0 14px; }
+
+  /* Nav wraps cleanly */
+  .nav-inner {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .nav-left {
+    min-width: unset;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  /* Hero stacks */
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .hero-right {
+    justify-content: flex-start;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  /* Logo smaller on mobile */
   .hero-logo {
-    width: 48px !important;
-    max-width: 48px !important;
+    width: 56px;
+    max-width: 56px;
+    margin-top: 10px;
+  }
+
+  /* Badges/pills align left */
+  .badges, .pill-row {
+    justify-content: flex-start;
+  }
+
+  /* Buttons become full-width */
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Copy box stacks */
+  .copybox {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .copybox code {
+    width: 100%;
+    overflow-x: auto;
+    display: block;
+  }
+
+  .copybox .btn,
+  .copybox .iconbtn {
+    width: 100%;
+  }
+
+  /* KV list becomes single column */
+  .kv li {
+    grid-template-columns: 1fr;
   }
 }
