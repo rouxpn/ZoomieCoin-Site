@@ -404,12 +404,11 @@ code, .mono{
     0 8px 28px rgba(0,0,0,0.35);
 }
 
-/* MOBILE: stack + shrink logo */
 @media (max-width: 900px) {
-  .hero-inner {
-    grid-template-columns: 1fr;
-    text-align: left;
+  .hero-logo {
+    width: 72px;
   }
+}
 
   .hero-right {
     justify-content: flex-start;
