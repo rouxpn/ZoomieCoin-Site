@@ -396,8 +396,8 @@ code, .mono{
 
 /* HERO LOGO SIZE */
 .hero-logo {
-  width: 56px;       
-  max-width: 56px
+  width: 256px;       
+  max-width: 256px
   height: auto;
   display: block;
 }
