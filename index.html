@@ -128,43 +128,57 @@
   </script>
   
 <script>
-  // Public pool SPL token account (the one holding ZME)
   const PUBLIC_POOL_TOKEN_ACCOUNT = "8FEUZoTDxCQf9Pr2eWmgAHoADdMbrb4Nv1bivDeva9GW";
+
+  // Try multiple RPCs (some block browsers; others allow CORS)
+  const RPCS = [
+    "https://rpc.ankr.com/solana",
+    "https://ssc-dao.genesysgo.net",
+    "https://api.mainnet-beta.solana.com",
+  ];
+
+  async function rpcCall(rpcUrl, method, params) {
+    const res = await fetch(rpcUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ jsonrpc: "2.0", id: 1, method, params }),
+    });
+
+    // If an RPC returns HTML or a non-OK status, treat as failure
+    if (!res.ok) throw new Error(`HTTP ${res.status} from ${rpcUrl}`);
+
+    const data = await res.json();
+    if (data.error) throw new Error(`RPC error from ${rpcUrl}: ${data.error.message || "unknown"}`);
+    return data.result;
+  }
+
+  function fmt(nStr) {
+    const n = Number(nStr);
+    return Number.isFinite(n) ? n.toLocaleString() : String(nStr);
+  }
 
   async function loadPublicPoolBalance() {
     const el = document.getElementById("poolAmt");
-    try {
-      // Using a public Solana RPC endpoint (may rate-limit on heavy traffic)
-      const rpc = "https://api.mainnet-beta.solana.com";
+    if (!el) return;
 
-      const res = await fetch(rpc, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          jsonrpc: "2.0",
-          id: 1,
-          method: "getTokenAccountBalance",
-          params: [PUBLIC_POOL_TOKEN_ACCOUNT]
-        })
-      });
+    el.textContent = "…";
 
-      const data = await res.json();
-      const val = data?.result?.value;
+    for (const rpc of RPCS) {
+      try {
+        const result = await rpcCall(rpc, "getTokenAccountBalance", [PUBLIC_POOL_TOKEN_ACCOUNT]);
+        const val = result?.value;
 
-      // amount is raw integer string; uiAmountString is decimal-adjusted
-      // For your token (integer-only), uiAmountString should look like "725638"
-      const amountStr = val?.uiAmountString ?? val?.amount;
+        const amountStr = val?.uiAmountString ?? val?.amount;
+        if (!amountStr) throw new Error("No balance returned");
 
-      if (!amountStr) throw new Error("No balance returned");
-
-      // format with commas
-      const n = Number(amountStr);
-      el.textContent = Number.isFinite(n) ? n.toLocaleString() : amountStr;
-    } catch (err) {
-      // fallback text if RPC is down / rate-limited
-      el.textContent = "—";
-      console.warn("Pool balance fetch failed:", err);
+        el.textContent = fmt(amountStr);
+        return; // success
+      } catch (e) {
+        console.warn("Pool balance fetch failed:", e);
+      }
     }
+
+    el.textContent = "—";
   }
 
   loadPublicPoolBalance();
