@@ -43,9 +43,7 @@
             <span class="pill ok">Mint authority: disabled</span>
             <span class="pill ok">LP: burned</span>
           </div>
-          <p class="tagline">
-               Only <span id="poolAmt">…</span> ZME available in the public pool
-          </p>
+          <span id="poolAmt">…</span>
 
           <div class="hero-actions">
             <a class="btn primary" href="https://raydium.io/swap/" target="_blank">Buy on Raydium</a>
@@ -127,36 +125,25 @@
     });
   </script>
   
-    <script>
-      async function loadPoolBalance() {
-        const el = document.getElementById("poolAmt");
-        if (!el) return;
+<script>
+  async function loadPoolBalance() {
+    const el = document.getElementById("poolAmt");
+    if (!el) return;
 
-        el.textContent = "…";
+    try {
+      const res = await fetch("/data/pool.json", { cache: "no-store" });
+      if (!res.ok) throw new Error("HTTP " + res.status);
 
-        try {
-          const res = await fetch("/pool-balance", { cache: "no-store" });
-          if (!res.ok) throw new Error("HTTP " + res.status);
+      const data = await res.json();
+      const n = Number(data.amount);
+      el.textContent = Number.isFinite(n) ? n.toLocaleString() : data.amount;
+    } catch (e) {
+      console.warn("Pool balance load failed:", e);
+      el.textContent = "—";
+    }
+  }
 
-          const data = await res.json();
-
-          if (!data || !data.amount) {
-            console.warn("Pool balance unavailable:", data);
-            el.textContent = "—";
-            return;
-          }
-
-          const n = Number(data.amount);
-          el.textContent = Number.isFinite(n)
-            ? n.toLocaleString()
-            : data.amount;
-        } catch (err) {
-          console.warn("Pool balance fetch failed:", err);
-          el.textContent = "—";
-        }
-      }
-
-      loadPoolBalance();
-    </script>
+  loadPoolBalance();
+</script>
 </body>
 </html>
