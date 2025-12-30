@@ -485,3 +485,8 @@ code, .mono{
     grid-template-columns: 1fr;
   }
 }
+
+#poolAmt {
+  color: var(--accent);
+  font-weight: 800;
+}
