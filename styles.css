@@ -396,7 +396,7 @@ code, .mono{
 
 /* HERO LOGO SIZE */
 .hero-logo {
-  width: 80px;        /* smaller and clearly visible */
+  width: 64px;        /* smaller and clearly visible */
   height: auto;
   border-radius: 18px;
   background: rgba(255,255,255,0.04);
