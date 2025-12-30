@@ -404,19 +404,29 @@ code, .mono{
     0 8px 28px rgba(0,0,0,0.35);
 }
 
-@media (max-width: 900px) {
-  .hero-logo {
-    width: 72px;
-  }
+/* HERO LOGO SIZE */
+.hero-logo {
+  width: 80px;        /* smaller and clearly visible */
+  height: auto;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.04);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.12),
+    0 8px 24px rgba(0,0,0,0.35);
 }
+
+/* Mobile adjustments */
+@media (max-width: 900px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+  }
 
   .hero-right {
     justify-content: flex-start;
   }
 
   .hero-logo {
-    width: 96px;
-    margin-top: 16px;
+    width: 64px;
+    margin-top: 14px;
   }
 }
-
