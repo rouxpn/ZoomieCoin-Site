@@ -29,29 +29,40 @@
   </nav>
 
   <main class="wrap">
-    <header class="hero card">
-      <div class="hero-top">
-        <div>
+    <header class="hero">
+      <div class="hero-inner">
+
+        <!-- LEFT: text + buttons -->
+        <div class="hero-left">
           <h1>ZoomieCoin <span class="muted">(ZME)</span></h1>
-          <p class="tagline"> A token that celebrates cat zoomies in the world.</p>
-          <p class="fine">Solana meme token • simple links • verifiable proof</p>
+          <p class="tagline">No roadmap. Only zoomies!!</p>
+          <p class="subline">Solana meme token • simple links • verifiable proof</p>
+
+          <div class="pill-row">
+            <span class="pill">Supply: 1,000,000</span>
+            <span class="pill ok">Mint authority: disabled</span>
+            <span class="pill ok">LP: burned</span>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="https://raydium.io/swap/" target="_blank">Buy on Raydium</a>
+            <a class="btn secondary" href="https://jup.ag/swap/SOL-ZME" target="_blank">Buy on Jupiter</a>
+            <a class="btn ghost" href="/docs.html">Docs / White paper</a>
+          </div>
+
+          <p class="helper">
+            If your wallet doesn’t show ZME, add it as a custom token using the mint address below.
+          </p>
         </div>
 
-        <div class="badges">
-          <span class="badge">Supply: <strong>1,000,000</strong></span>
-          <span class="badge ok">Mint authority: <strong>disabled</strong></span>
-          <span class="badge ok">LP: <strong>burned</strong></span>
+        <!-- RIGHT: logo -->
+        <div class="hero-right">
+          <img src="assets/logo.png" alt="ZoomieCoin logo" class="hero-logo">
         </div>
-      </div>
 
-      <div class="hero-actions">
-        <a class="btn" href="https://raydium.io/swap/" target="_blank" rel="noreferrer">Buy on Raydium</a>
-        <a class="btn secondary" href="https://jup.ag/swap/SOL-ZME" target="_blank" rel="noreferrer">Buy on Jupiter</a>
-        <a class="btn ghost" href="/docs.html">Docs / White paper</a>
       </div>
-
-      <p class="fine">If your wallet doesn’t show ZME, add it as a custom token using the mint address below.</p>
     </header>
+
 
     <section class="grid2">
       <section class="card">
