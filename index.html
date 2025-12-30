@@ -43,6 +43,9 @@
             <span class="pill ok">Mint authority: disabled</span>
             <span class="pill ok">LP: burned</span>
           </div>
+          <p class="tagline">
+               Only <span id="poolAmt">…</span> ZME available in the public pool
+          </p>
 
           <div class="hero-actions">
             <a class="btn primary" href="https://raydium.io/swap/" target="_blank">Buy on Raydium</a>
@@ -123,5 +126,48 @@
       }
     });
   </script>
+  
+<script>
+  // Public pool SPL token account (the one holding ZME)
+  const PUBLIC_POOL_TOKEN_ACCOUNT = "8FEUZoTDxCQf9Pr2eWmgAHoADdMbrb4Nv1bivDeva9GW";
+
+  async function loadPublicPoolBalance() {
+    const el = document.getElementById("poolAmt");
+    try {
+      // Using a public Solana RPC endpoint (may rate-limit on heavy traffic)
+      const rpc = "https://api.mainnet-beta.solana.com";
+
+      const res = await fetch(rpc, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          jsonrpc: "2.0",
+          id: 1,
+          method: "getTokenAccountBalance",
+          params: [PUBLIC_POOL_TOKEN_ACCOUNT]
+        })
+      });
+
+      const data = await res.json();
+      const val = data?.result?.value;
+
+      // amount is raw integer string; uiAmountString is decimal-adjusted
+      // For your token (integer-only), uiAmountString should look like "725638"
+      const amountStr = val?.uiAmountString ?? val?.amount;
+
+      if (!amountStr) throw new Error("No balance returned");
+
+      // format with commas
+      const n = Number(amountStr);
+      el.textContent = Number.isFinite(n) ? n.toLocaleString() : amountStr;
+    } catch (err) {
+      // fallback text if RPC is down / rate-limited
+      el.textContent = "—";
+      console.warn("Pool balance fetch failed:", err);
+    }
+  }
+
+  loadPublicPoolBalance();
+</script>
 </body>
 </html>
