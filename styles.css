@@ -394,16 +394,6 @@ code, .mono{
   justify-content: center;
 }
 
-.hero-logo {
-  width: 96px;          /* ↓ smaller, brand-sized */
-  height: auto;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.04);
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,0.12),
-    0 8px 28px rgba(0,0,0,0.35);
-}
-
 /* HERO LOGO SIZE */
 .hero-logo {
   width: 80px;        /* smaller and clearly visible */
