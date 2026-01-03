@@ -446,8 +446,8 @@ code, .mono{
 
   /* Logo smaller on mobile */
   .hero-logo {
-    width: 56px;
-    max-width: 56px;
+    width: 200px;
+    max-width: 200px;
     margin-top: 10px;
   }
 
