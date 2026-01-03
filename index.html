@@ -44,7 +44,9 @@
             <span class="pill ok">LP: burned</span>
             <p class="small">
              Only <strong><span id="poolAmt">…</span> ZME</strong> available in the public pool
+            <span class="muted">· updated <span id="poolUpdated">…</span></span>
             </p>
+            
           </div>
 
           <div class="hero-actions">
@@ -83,8 +85,6 @@
           <a class="link" href="https://solscan.io/token/12eep6yiUMjkEL9YGmvfoaAtJRLd6gG3rVyLPGbW8hrC" target="_blank" rel="noreferrer">Solscan →</a>
           <a class="link" href="https://github.com/rouxpn/ZoomieCoin" target="_blank" rel="noreferrer">GitHub (metadata/logo) →</a>
         </div>
-
-        <p class="small">Tip: if you can’t search “ZME” yet, use the mint address to add/import the token in your wallet or DEX.</p>
       </section>
 
       <section class="card">
@@ -129,19 +129,37 @@
   
 <script>
   async function loadPoolBalance() {
-    const el = document.getElementById("poolAmt");
-    if (!el) return;
+    const amtEl = document.getElementById("poolAmt");
+    const updEl = document.getElementById("poolUpdated");
+    if (!amtEl || !updEl) return;
 
     try {
       const res = await fetch("/data/pool.json", { cache: "no-store" });
       if (!res.ok) throw new Error("HTTP " + res.status);
 
       const data = await res.json();
+
+      // amount
       const n = Number(data.amount);
-      el.textContent = Number.isFinite(n) ? n.toLocaleString() : data.amount;
+      amtEl.textContent = Number.isFinite(n) ? n.toLocaleString() : data.amount;
+
+      // updated time (stored by python as UTC ISO)
+      if (data.updated_utc) {
+        const d = new Date(data.updated_utc);
+        updEl.textContent = d.toLocaleString([], {
+          year: "numeric",
+          month: "short",
+          day: "2-digit",
+          hour: "numeric",
+          minute: "2-digit"
+        });
+      } else {
+        updEl.textContent = "—";
+      }
     } catch (e) {
       console.warn("Pool balance load failed:", e);
-      el.textContent = "—";
+      amtEl.textContent = "—";
+      updEl.textContent = "—";
     }
   }
 
