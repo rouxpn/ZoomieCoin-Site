@@ -396,8 +396,8 @@ code, .mono{
 
 /* HERO LOGO (desktop size) */
 .hero-logo {
-  width: 120px;            /* change this (64–96) if you want */
-  max-width: 120px;
+  width: 240px;            /* change this (64–96) if you want */
+  max-width: 240px;
   height: auto;
   display: block;
   border-radius: 18px;
